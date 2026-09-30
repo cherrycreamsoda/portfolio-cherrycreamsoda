@@ -1,0 +1,26 @@
+:root {
+  --bg: #0F0F0F;
+  --text-color: #F0F0F0;
+  --headerBG: #00000000;
+  --headerX: 90px;
+
+  background-color: var(--bg);
+  color: var(--text-color);
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  font-family: "Antonio", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, li, label, button,
+.logo, .navLinks a {
+  text-box: trim-both cap alphabetic;
+}

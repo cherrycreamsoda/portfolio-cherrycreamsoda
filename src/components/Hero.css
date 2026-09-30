@@ -1,0 +1,48 @@
+.hero {
+  position: relative;
+  height: calc(100vh - var(--headerX));
+  overflow: hidden;
+}
+
+.heroContent {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(calc(-50% - (var(--headerX) / 2)));
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  padding-block: 5em;
+  animation: marquee 60s linear infinite;
+}
+
+.marqueeText {
+  display: block;
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: #000000;
+  font-family: "Italiana", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 300px;
+  line-height: 1;
+  text-box: trim-both cap alphabetic;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
