@@ -1,0 +1,84 @@
+.work {
+  padding: 80px 80px;
+  background: #F0F0F0;
+  color: #0F0F0F;
+  border-radius: 20px 20px 0 0;
+}
+
+.workHeader {
+  margin-bottom: 48px;
+}
+
+.workHeader h2 {
+  font-size: 64px;
+  font-weight: 400;
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.projectCard {
+  min-height: 420px;
+  border: 1px solid #0F0F0F;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectImage {
+  min-height: 240px;
+  border-bottom: 1px solid #0F0F0F;
+}
+
+.projectImage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.projectDetails {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+}
+
+.projectDetails h3 {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.projectDetails p {
+  font-size: 20px;
+}
+
+.projectLinks {
+  display: flex;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.projectLinks a {
+  color: #0F0F0F;
+  font-size: 18px;
+}
+
+@media (max-width: 700px) {
+  .work {
+    padding: 56px 20px;
+  }
+
+  .workHeader h2 {
+    font-size: 48px;
+  }
+
+  .projectGrid {
+    grid-template-columns: 1fr;
+  }
+}

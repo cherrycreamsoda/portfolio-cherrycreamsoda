@@ -2,7 +2,6 @@
   --bg: #0F0F0F;
   --text-color: #F0F0F0;
   --headerBG: #00000000;
-  --headerX: 90px;
 
   background-color: var(--bg);
   color: var(--text-color);

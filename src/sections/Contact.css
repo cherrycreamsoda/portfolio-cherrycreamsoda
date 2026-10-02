@@ -1,0 +1,100 @@
+.contact {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 80px;
+  padding: 80px;
+  background: #0F0F0F;
+  color: #F0F0F0;
+  margin-top: -20px;
+  border-radius: 20px 20px 0 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 640px;
+}
+
+.nameFields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.contactForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #F0F0F0;
+  font-size: 18px;
+}
+
+.contactForm input,
+.contactForm textarea {
+  width: 100%;
+  border: 1px solid #F0F0F0;
+  border-radius: 20px;
+  padding: 12px;
+  background: transparent;
+  color: #F0F0F0;
+  font: inherit;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+
+.contactForm input {
+  height: 52px;
+}
+
+.contactForm textarea {
+  min-height: 124px;
+  resize: vertical;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.contactForm textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.contactDetails {
+  align-self: start;
+}
+
+.contactDetails h2 {
+  margin-bottom: 32px;
+  font-size: 64px;
+  font-weight: 400;
+}
+
+.contactDetails a {
+  color: #F0F0F0;
+  font-size: 28px;
+}
+
+@media (max-width: 700px) {
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 56px;
+    padding: 56px 20px;
+  }
+
+  .nameFields {
+    grid-template-columns: 1fr;
+  }
+
+  .contactDetails h2 {
+    font-size: 48px;
+  }
+
+  .contactDetails a {
+    font-size: 22px;
+  }
+}

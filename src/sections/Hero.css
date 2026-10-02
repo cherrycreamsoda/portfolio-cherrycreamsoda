@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  height: calc(100vh - var(--headerX));
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -9,7 +9,7 @@
   top: 50%;
   left: 0;
   width: 100%;
-  transform: translateY(calc(-50% - (var(--headerX) / 2)));
+  transform: translateY(-50%);
 
   display: flex;
   flex-direction: column;
