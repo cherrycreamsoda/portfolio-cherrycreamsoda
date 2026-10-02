@@ -48,7 +48,6 @@
 }
 
 .scroll {
-  /* arrow timing: change these and everything stays in sync */
   --drop-delay: 0.1s;
   --drop-duration: 0.5s;
   --drop-distance: 10px;
@@ -67,7 +66,7 @@
 .scrollLabel {
   font-size: 1.4rem;
   letter-spacing: 0.4em;
-  margin-right: -0.4em; /* cancels trailing letter-space so it stays centered */
+  margin-right: -0.4em;
   text-transform: uppercase;
   opacity: 0.7;
 }
@@ -82,13 +81,10 @@
   overflow: visible;
 }
 
-/* step 1: the flat line moves down (slow start, then constant speed) */
 .arrowDrop {
   animation: arrowDrop var(--drop-duration) linear var(--drop-delay) both;
 }
 
-/* step 2: the flat line opens into a V with a rounded tip.
-   It starts exactly when the drop ends. */
 .arrowCurve {
   fill: none;
   stroke-linecap: round;
@@ -101,8 +97,6 @@
     calc(var(--drop-delay) + var(--drop-duration)) both;
 }
 
-/* 0-40% of the time: speeds up smoothly (25% of the distance).
-   40-100%: constant speed at exactly the speed it reached. */
 @keyframes arrowDrop {
   0% {
     transform: translateY(0);
@@ -117,7 +111,6 @@
   }
 }
 
-/* 0.001, not 0: a scale of exactly 0 makes the browser skip drawing it */
 @keyframes arrowCurve {
   from { transform: scaleY(0.001); }
   to   { transform: scaleY(1); }

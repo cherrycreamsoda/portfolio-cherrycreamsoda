@@ -7,7 +7,7 @@ const track = Array(REPEAT).fill(TEXT).join('')
 
 function Hero() {
   return (
-    <section className="hero">
+    <section className="hero" id="top">
       <div className="heroContent">
         <div className="marquee">
           <div className="marqueeTrack">
