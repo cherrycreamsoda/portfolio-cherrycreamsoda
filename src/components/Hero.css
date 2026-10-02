@@ -46,3 +46,85 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+.scroll {
+  /* arrow timing: change these and everything stays in sync */
+  --drop-delay: 0.1s;
+  --drop-duration: 0.5s;
+  --drop-distance: 10px;
+  --curve-duration: 1s;
+
+  position: absolute;
+  bottom: 8px;
+  right: -18px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.7;
+}
+
+.scrollLabel {
+  font-size: 1.4rem;
+  letter-spacing: 0.4em;
+  margin-right: -0.4em; /* cancels trailing letter-space so it stays centered */
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.scrollArrow {
+  width: 60px;
+  height: 60px;
+  fill: none;
+  stroke: var(--text-color);
+  stroke-width: 1;
+  stroke-linecap: round;
+  overflow: visible;
+}
+
+/* step 1: the flat line moves down (slow start, then constant speed) */
+.arrowDrop {
+  animation: arrowDrop var(--drop-duration) linear var(--drop-delay) both;
+}
+
+/* step 2: the flat line opens into a V with a rounded tip.
+   It starts exactly when the drop ends. */
+.arrowCurve {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform-box: view-box;
+  transform-origin: 20px 6px;
+  vector-effect: non-scaling-stroke;
+  stroke-width: 1.5;
+  animation: arrowCurve var(--curve-duration) cubic-bezier(0.22, 1, 0.36, 1)
+    calc(var(--drop-delay) + var(--drop-duration)) both;
+}
+
+/* 0-40% of the time: speeds up smoothly (25% of the distance).
+   40-100%: constant speed at exactly the speed it reached. */
+@keyframes arrowDrop {
+  0% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.333, 0, 0.667, 0.333);
+  }
+  40% {
+    transform: translateY(calc(var(--drop-distance) * 0.25));
+    animation-timing-function: linear;
+  }
+  100% {
+    transform: translateY(var(--drop-distance));
+  }
+}
+
+/* 0.001, not 0: a scale of exactly 0 makes the browser skip drawing it */
+@keyframes arrowCurve {
+  from { transform: scaleY(0.001); }
+  to   { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrowDrop, .arrowCurve { animation: none; }
+  .arrowDrop { transform: translateY(var(--drop-distance)); }
+  .arrowCurve { transform: scaleY(1); }
+}
