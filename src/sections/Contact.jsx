@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Contact.css'
 
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/your-email@example.com'
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/2575b8f268477b239ea66fc800cdcc3e'
 
 const initialForm = {
   firstName: '',
@@ -92,9 +92,6 @@ function Contact() {
     <section className="contact" id="contact" data-header-theme="dark">
       <div className="contactDetails">
         <h2>Contact</h2>
-        <div className="contactEmail">
-          <a href="mailto:hello@hamza.xyz">hello@hamza.xyz</a>
-        </div>
       </div>
 
       <form className="contactForm" onSubmit={handleSubmit} noValidate>

@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 80px;
-  padding: 80px;
+  padding: 80px 80px 0px 80px;
   background: #0F0F0F;
   color: #F0F0F0;
   margin-top: -20px;
@@ -79,27 +79,6 @@
   margin-bottom: 32px;
   font-size: 64px;
   font-weight: 400;
-}
-
-.contactEmail {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  box-sizing: border-box;
-  border: 2px solid red;
-  container-type: inline-size;
-}
-
-.contactDetails a {
-  display: block;
-  width: 100%;
-  color: #ffffff;
-  font-size: min(170px, 16cqw);
-  line-height: 1;
-  text-align: center;
-  white-space: nowrap;
 }
 
 /* Field errors */
@@ -181,10 +160,6 @@
 
   .contactDetails h2 {
     font-size: 48px;
-  }
-
-  .contactDetails a {
-    font-size: min(22px, 7cqw);
   }
 
   .submitButton {
