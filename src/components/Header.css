@@ -9,6 +9,16 @@
     gap: 20px;
     height: 50px;
     box-sizing: border-box;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-16px);
+    transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.header.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
 }
 
 .nav {

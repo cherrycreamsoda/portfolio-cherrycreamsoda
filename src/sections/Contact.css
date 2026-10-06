@@ -3,14 +3,11 @@
   z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 80px;
-  padding: 80px 80px 0px 80px;
+  gap: 40px;
+  padding: 40px;
   background: #0F0F0F;
   color: #F0F0F0;
-  margin-top: -20px;
   border-radius: 20px 20px 0 0;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -18,7 +15,7 @@
 .contactForm {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
   max-width: 640px;
   grid-column: 2;
   grid-row: 1;
@@ -27,13 +24,13 @@
 .nameFields {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  gap: 20px;
 }
 
 .contactForm label {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   color: #F0F0F0;
   font-size: 18px;
 }
@@ -43,7 +40,7 @@
   width: 100%;
   border: 1px solid #F0F0F0;
   border-radius: 20px;
-  padding: 12px;
+  padding: 14px 16px;
   background: transparent;
   color: #F0F0F0;
   font: inherit;
@@ -56,7 +53,7 @@
 }
 
 .contactForm textarea {
-  min-height: 124px;
+  min-height: 140px;
   resize: vertical;
   overflow-y: auto;
   scrollbar-width: none;
@@ -76,7 +73,7 @@
 
 .contactDetails h2 {
   flex: 0 0 auto;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
   font-size: 64px;
   font-weight: 400;
 }
@@ -144,8 +141,8 @@
 @media (max-width: 700px) {
   .contact {
     grid-template-columns: 1fr;
-    gap: 56px;
-    padding: 56px 20px;
+    gap: 40px;
+    padding: 40px;
   }
 
   .nameFields {
@@ -160,6 +157,7 @@
 
   .contactDetails h2 {
     font-size: 48px;
+    margin-bottom: 40px;
   }
 
   .submitButton {

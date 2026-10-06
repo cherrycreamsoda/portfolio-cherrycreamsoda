@@ -3,9 +3,12 @@ import "./Header.css"
 
 function Header() {
   const [headerTheme, setHeaderTheme] = useState('dark')
+  const [hasScrolled, setHasScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
+      setHasScrolled(window.scrollY > 0)
+
       const activeSection = Array.from(
         document.querySelectorAll('[data-header-theme]'),
       ).find((section) => {
@@ -23,7 +26,11 @@ function Header() {
   }, [])
 
   return (
-    <header className={`header${headerTheme === 'light' ? ' light' : ''}`}>
+    <header
+      className={`header${headerTheme === 'light' ? ' light' : ''}${
+        hasScrolled ? ' visible' : ''
+      }`}
+    >
       <nav className="nav">
         <a className="logo" href="#top">cherrycreamsoda.</a>
         <div className="navLinks">

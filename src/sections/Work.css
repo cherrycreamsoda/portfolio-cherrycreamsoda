@@ -1,12 +1,12 @@
 .work {
-  padding: 80px 80px;
+  padding: 40px;
   background: #F0F0F0;
   color: #0F0F0F;
   border-radius: 20px 20px 0 0;
 }
 
 .workHeader {
-  margin-bottom: 48px;
+  margin-bottom: 40px;
 }
 
 .workHeader h2 {
@@ -17,21 +17,21 @@
 .projectGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  gap: 40px;
 }
 
 .projectCard {
-  min-height: 420px;
+  min-height: 520px;
   border: 1px solid #0F0F0F;
   border-radius: 20px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
 
 .projectImage {
   position: relative;
-  min-height: 240px;
+  min-height: 320px;
   border-bottom: 1px solid #0F0F0F;
   display: grid;
   place-items: center;
@@ -55,31 +55,34 @@
   position: relative;
   display: block;
   max-width: 100%;
-  height: 240px;
+  height: 320px;
   object-fit: contain;
 }
 
 .projectDetails {
   display: flex;
-  flex: 1;
   flex-direction: column;
-  gap: 16px;
-  padding: 24px;
+  gap: 20px;
+  padding: 32px;
 }
 
 .projectDetails h3 {
   font-size: 32px;
   font-weight: 400;
+  margin: 0;
 }
 
 .projectDetails p {
   font-size: 20px;
+  margin: 0;
+  line-height: 1.4;
+  flex: 1;
 }
 
 .projectLinks {
   display: flex;
-  gap: 16px;
-  margin-top: auto;
+  gap: 20px;
+  margin-top: 8px;
   align-items: center;
   justify-content: flex-end;
 }
@@ -102,8 +105,7 @@
 
 .demoLink {
   font-size: 24px;
-    border: 1px solid #0F0F0F;
-
+  border: 1px solid #0F0F0F;
 }
 
 .demoLink .preview-icon {
@@ -129,7 +131,7 @@
 
 @media (max-width: 700px) {
   .work {
-    padding: 56px 20px;
+    padding: 40px;
   }
 
   .workHeader h2 {
