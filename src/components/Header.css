@@ -62,10 +62,11 @@
 
 .ctaBox {
     flex: 0 0 200px;
+    position: relative;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 2px;
     background: var(--headerBG);
     backdrop-filter: blur(12px);
@@ -75,14 +76,67 @@
     transition: background-color 220ms ease;
 }
 
-.ctaBox button {
+.ctaExtension {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    display: grid;
+    width: 46px;
+    height: 46px;
+    place-items: center;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    background: #0F0F0F;
+    color: #FFFFFF;
+    text-decoration: none;
+    transform: translateX(calc(100vw + 48px));
+    transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 180ms ease, color 180ms ease;
+}
+
+.ctaBox:hover .ctaExtension {
+    transform: translateX(0);
+}
+
+.ctaExtension:hover {
+    background: #FFFFFF;
+    color: #0F0F0F;
+}
+
+.ctaExtension svg {
+    width: 24px;
+    height: 24px;
+}
+
+.ctaButton {
+    display: flex;
     width: 100%;
     height: 100%;
-    border: 0;
+    align-self: flex-start;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid transparent;
+    box-sizing: border-box;
     border-radius: 999px;
     background: #FFFFFF;
     color: #0F0F0F;
     font: inherit;
     font-size: 18px;
     cursor: pointer;
+    text-decoration: none;
+    transition: width 180ms ease, background-color 180ms ease, color 180ms ease,
+        border-color 180ms ease;
+}
+
+.ctaBox:hover .ctaButton {
+    width: 70%;
+    background: #0F0F0F;
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ctaExtension {
+        transition: background-color 180ms ease, color 180ms ease;
+    }
 }

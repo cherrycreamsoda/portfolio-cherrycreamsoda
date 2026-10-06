@@ -18,7 +18,6 @@ function Hero() {
       </div>
 
       <div className="scroll">
-        <span className="scrollLabel">Scroll</span>
         <svg
           className="scrollArrow"
           viewBox="0 0 40 40"
@@ -29,6 +28,7 @@ function Hero() {
           </g>
         </svg>
       </div>
+
     </section>
   )
 }

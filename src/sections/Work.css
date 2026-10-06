@@ -85,11 +85,15 @@
 }
 
 .projectLinks a {
+  width: 48px;
+  height: 48px;
   color: #0F0F0F;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  border-radius: 50%;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
 .githubLink {
@@ -97,15 +101,30 @@
 }
 
 .demoLink {
-  width: 48px;
-  height: 48px;
-  border: 1px solid #0F0F0F;
-  border-radius: 50%;
+  font-size: 24px;
+    border: 1px solid #0F0F0F;
+
 }
 
 .demoLink .preview-icon {
   width: 24px;
   height: 24px;
+}
+
+.projectLinks a:hover {
+  background: #0F0F0F;
+  color: #F0F0F0;
+  transform: translateY(-4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projectLinks a {
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  .projectLinks a:hover {
+    transform: none;
+  }
 }
 
 @media (max-width: 700px) {
