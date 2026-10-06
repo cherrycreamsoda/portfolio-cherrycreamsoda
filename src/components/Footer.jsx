@@ -3,25 +3,35 @@ import './Footer.css'
 function Footer() {
   return (
     <footer className="siteFooter">
-      <div className="footerTop">
-        <span>© 2026 cherrycreamsoda.</span>
-        <div className="footerLinks">
-          <a
-            href="https://www.linkedin.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            LinkedIn
-          </a>
-          <a href="https://github.com/" target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-        </div>
-      </div>
+      <nav className="footerSection" aria-label="Footer navigation">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-      <div className="footerCredit">
-        <span>made with 🤍 by yours truely.</span>
-      </div>
+      <nav className="footerSection" aria-label="Social links">
+        <a
+          href="https://github.com/cherrycreamsoda/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub
+        </a>
+        <a
+          href="https://www.behance.net/hamzazainbhatti"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Behance
+        </a>
+        <a
+          href="https://www.linkedin.com/in/hamzazainbhatti/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          LinkedIn
+        </a>
+      </nav>
     </footer>
   )
 }

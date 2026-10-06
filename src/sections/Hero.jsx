@@ -1,3 +1,4 @@
+import { FaBehance, FaGithub, FaLinkedinIn } from 'react-icons/fa'
 import './Hero.css'
 
 const TEXT = 'CherryCreamSoda'
@@ -28,6 +29,33 @@ function Hero() {
           </g>
         </svg>
       </div>
+
+      <nav className="heroSocials" aria-label="Social links">
+        <a
+          href="https://www.linkedin.com/in/hamzazainbhatti/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn"
+        >
+          <FaLinkedinIn aria-hidden="true" />
+        </a>
+        <a
+          href="https://github.com/cherrycreamsoda/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="GitHub"
+        >
+          <FaGithub aria-hidden="true" />
+        </a>
+        <a
+          href="https://www.behance.net/hamzazainbhatti"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Behance"
+        >
+          <FaBehance aria-hidden="true" />
+        </a>
+      </nav>
 
     </section>
   )

@@ -73,6 +73,30 @@
   overflow: visible;
 }
 
+.heroSocials {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.heroSocials a {
+  display: inline-flex;
+  color: #292929;
+  font-size: 22px;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.heroSocials a:hover,
+.heroSocials a:focus-visible {
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
 .backToTop {
   position: fixed;
   right: -76px;
