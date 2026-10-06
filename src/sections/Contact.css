@@ -20,6 +20,8 @@
   flex-direction: column;
   gap: 24px;
   max-width: 640px;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .nameFields {
@@ -65,19 +67,100 @@
 }
 
 .contactDetails {
-  align-self: start;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .contactDetails h2 {
+  flex: 0 0 auto;
   margin-bottom: 32px;
   font-size: 64px;
   font-weight: 400;
 }
 
-.contactDetails a {
-  color: #F0F0F0;
-  font-size: 28px;
+.contactEmail {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid red;
+  container-type: inline-size;
 }
+
+.contactDetails a {
+  display: block;
+  width: 100%;
+  color: #ffffff;
+  font-size: min(170px, 16cqw);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Field errors */
+.fieldError {
+  font-size: 14px;
+  color: #FF6B6B;
+}
+
+.contactForm input[aria-invalid='true'],
+.contactForm textarea[aria-invalid='true'] {
+  border-color: #FF6B6B;
+}
+
+/* Focus state (matches your outlined inputs) */
+.contactForm input:focus,
+.contactForm textarea:focus {
+  outline: none;
+  border-color: #FFFFFF;
+  box-shadow: 0 0 0 1px #FFFFFF;
+}
+
+/* Submit button: filled pill that inverts on hover */
+.submitButton {
+  align-self: flex-start;
+  height: 52px;
+  padding: 0 32px;
+  border: 1px solid #F0F0F0;
+  border-radius: 20px;
+  background: #F0F0F0;
+  color: #0F0F0F;
+  font: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: transparent;
+  color: #F0F0F0;
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Status message */
+.formStatus {
+  min-height: 1.5em;
+  margin: 0;
+  font-size: 18px;
+}
+
+.formStatus.success {
+  color: #F0F0F0;
+}
+
+.formStatus.error {
+  color: #FF6B6B;
+}
+
 
 @media (max-width: 700px) {
   .contact {
@@ -90,11 +173,21 @@
     grid-template-columns: 1fr;
   }
 
+  .contactDetails,
+  .contactForm {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
   .contactDetails h2 {
     font-size: 48px;
   }
 
   .contactDetails a {
-    font-size: 22px;
+    font-size: min(22px, 7cqw);
+  }
+
+  .submitButton {
+    align-self: stretch;
   }
 }

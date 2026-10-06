@@ -1,17 +1,10 @@
 const projects = [
   {
-    name: 'Project One',
-    description: 'A short description for the first project.',
-    demoUrl: '#',
-    githubUrl: '#',
-    image: '',
-  },
-  {
-    name: 'Project Two',
-    description: 'A short description for the second project.',
-    demoUrl: '#',
-    githubUrl: '#',
-    image: '',
+    name: 'Tours and Travel App',
+    description: 'A travel experience for discovering destinations and planning trips.',
+    demoUrl: 'https://travel-and-tours-app.vercel.app/',
+    githubUrl: 'https://github.com/cherrycreamsoda/travel-and-tours-app',
+    image: '/projects/tours-and-travel.png',
   },
 ]
 
