@@ -79,7 +79,6 @@
 .ctaExtension {
     position: absolute;
     top: 2px;
-    right: 2px;
     display: grid;
     width: 46px;
     height: 46px;
@@ -89,13 +88,13 @@
     background: #0F0F0F;
     color: #FFFFFF;
     text-decoration: none;
-    transform: translateX(calc(100vw + 48px));
-    transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    right: -70px;
+    transition: right 300ms cubic-bezier(0.22, 1, 0.36, 1),
         background-color 180ms ease, color 180ms ease;
 }
 
 .ctaBox:hover .ctaExtension {
-    transform: translateX(0);
+    right: 2px;
 }
 
 .ctaExtension:hover {
