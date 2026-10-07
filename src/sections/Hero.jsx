@@ -12,25 +12,33 @@ function Hero() {
 
     const updateTitleSize = () => {
       const baseSize = 100
-      const measurement = title.cloneNode(true)
-      measurement.style.position = 'fixed'
-      measurement.style.left = '0'
-      measurement.style.top = '0'
-      measurement.style.width = 'max-content'
-      measurement.style.fontSize = `${baseSize}px`
-      measurement.style.visibility = 'hidden'
-      measurement.style.pointerEvents = 'none'
-      document.body.appendChild(measurement)
+      const titleStyles = window.getComputedStyle(title)
+      const canvas = document.createElement('canvas')
+      const context = canvas.getContext('2d')
+      if (!context) return
 
-      const naturalWidth = measurement.getBoundingClientRect().width
+      context.font = [
+        titleStyles.fontStyle,
+        titleStyles.fontVariant,
+        titleStyles.fontWeight,
+        `${baseSize}px`,
+        titleStyles.fontFamily,
+      ].join(' ')
+
+      const naturalWidth = context.measureText(title.textContent).width
+      const letterSpacing = parseFloat(titleStyles.letterSpacing)
+      const adjustedWidth =
+        naturalWidth +
+        (Number.isFinite(letterSpacing)
+          ? letterSpacing * Math.max(title.textContent.length - 1, 0)
+          : 0)
       const availableWidth = Math.max(
-        document.documentElement.clientWidth,
+        document.documentElement.clientWidth - 270,
         0,
       )
-      measurement.remove()
 
-      if (naturalWidth > 0 && availableWidth > 0) {
-        setTitleSize(`${(baseSize * availableWidth) / naturalWidth}px`)
+      if (adjustedWidth > 0 && availableWidth > 0) {
+        setTitleSize(`${(baseSize * availableWidth) / adjustedWidth}px`)
       }
     }
 
@@ -51,7 +59,27 @@ function Hero() {
           </div>
           <a href="#contact">Contact</a>
         </nav>
+      </div>
 
+      <h1
+        className="heroTitle heroTitleBottom"
+        style={titleSize ? { fontSize: titleSize } : undefined}
+        aria-hidden="true"
+      >
+        <span className="heroTitleText" ref={titleRef}>
+          cherrycreamsoda.
+        </span>
+      </h1>
+
+      <h1
+        className="heroTitle heroTitleMiddle"
+        style={titleSize ? { fontSize: titleSize } : undefined}
+        aria-hidden="true"
+      >
+        <span className="heroTitleText">cherrycreamsoda.</span>
+      </h1>
+
+      <div className="heroImageLayer">
         <img
           className="heroShape"
           src="/30.png"
@@ -61,11 +89,11 @@ function Hero() {
       </div>
 
       <h1
-        ref={titleRef}
-        className="heroTitle"
+        className="heroTitle heroTitleTop"
         style={titleSize ? { fontSize: titleSize } : undefined}
+        aria-label="cherrycreamsoda."
       >
-        cherrycreamsoda.
+        <span className="heroTitleText">cherrycreamsoda.</span>
       </h1>
 
       <div className="scroll">
