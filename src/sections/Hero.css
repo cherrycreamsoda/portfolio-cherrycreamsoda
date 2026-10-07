@@ -1,8 +1,15 @@
+/* ---------- Section + the rounded "window" ---------- */
+
 .hero {
   --frame-left: 80px;
   --frame-right: 80px;
   --frame-top: 40px;
   --frame-bottom: 80px;
+
+  /* Title size = (screen width - 270px) x this number.
+     Depends on your font: see "How to tune" in the notes. */
+  --title-ratio: 0.21;
+
   position: relative;
   height: 100vh;
   overflow: hidden;
@@ -11,68 +18,44 @@
 
 .heroFrame {
   position: absolute;
-  inset: var(--frame-top) var(--frame-right) var(--frame-bottom)
-    var(--frame-left);
+  inset: var(--frame-top) var(--frame-right) var(--frame-bottom) var(--frame-left);
   z-index: 2;
-  display: grid;
-  place-items: center;
   overflow: hidden;
   border: 4px solid #f0f0f0;
   border-radius: 24px;
   background: #f0f0f0;
-  box-sizing: border-box;
   outline: 4px solid #131313;
-  outline-offset: 0;
-  box-shadow: 18px 18px 28px 8px rgba(0, 0, 0, 0.429);
+  box-shadow: 18px 18px 28px 8px rgba(0, 0, 0, 0.43);
 }
+
+/* ---------- Nav + descriptor inside the window ---------- */
 
 .heroNav {
   position: absolute;
   top: 24px;
   right: 24px;
   left: 24px;
-  z-index: 3;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   color: #0f0f0f;
   font-size: 18px;
-  opacity: 1;
-  transition: opacity 220ms ease, visibility 0s linear 220ms;
+  transition: opacity 220ms, visibility 220ms;
 }
 
 .heroNav.is-hidden {
-  visibility: hidden;
   opacity: 0;
-  pointer-events: none;
-  transition-delay: 0s;
-}
-
-.heroNav:not(.is-hidden) {
-  transition-delay: 220ms, 440ms;
-}
-
-.heroDescriptor {
-  position: absolute;
-  bottom: 170px;
-  right: 24px;
-  z-index: 3;
-  color: #444444;
-  font-size: 60px;
-  font-weight: 300;
-  line-height: 1;
+  visibility: hidden;
 }
 
 .heroNavLinks {
   display: flex;
-  align-items: center;
   gap: 24px;
 }
 
 .heroNav a {
   color: inherit;
   text-decoration: none;
-  transition: opacity 180ms ease;
+  transition: opacity 180ms;
 }
 
 .heroNav a:hover,
@@ -80,81 +63,48 @@
   opacity: 0.6;
 }
 
-.heroShape {
+.heroDescriptor {
   position: absolute;
-  top: calc(50% - 30px);
-  left: calc(50% - 50px);
-  width: min(58vw, 620px);
-  max-width: calc(100% + 380px);
-  max-height: calc(100% + 380px);
-  height: auto;
-  object-fit: contain;
-  pointer-events: none;
-  opacity: 0.9;
-  transform: translate(-50%, -50%) rotate(-8deg);
+  right: 24px;
+  bottom: 170px;
+  color: #444;
+  font-size: 60px;
+  font-weight: 300;
+  line-height: 1;
 }
 
-.heroImageLayer {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-}
+/* ---------- The big name: 3 layers + the shape ---------- */
 
 .heroTitle {
   position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
+  box-sizing: border-box;
   width: 100vw;
-  height: 100%;
   margin: 0;
+  padding-bottom: 280px; /* centers the text 140px above the middle */
+  display: flex;
+  align-items: center;
   pointer-events: none;
-  font-size: 100px;
+  font-size: calc((100vw - 270px) * var(--title-ratio));
   font-weight: 400;
   line-height: 0.9;
   letter-spacing: -0.06em;
-  text-align: left;
   white-space: nowrap;
 }
 
-.heroTitleText {
-  position: absolute;
-  top: calc(50% - 140px);
-  left: 0;
-  width: 100%;
-  display: block;
-  transform: translateY(-50%);
-}
-
-.heroTitleTop {
-  z-index: 5;
-  color: transparent;
-  -webkit-text-stroke: 2px #f0f0f0;
-  text-stroke: 2px #f0f0f0;
-}
-
+/* back: dark grey, shows inside the window */
 .heroTitleMiddle {
   z-index: 3;
-  color: #444444;
+  color: #444;
 }
 
+/* black, but a mask hides it inside the window,
+   so the grey layer behind shows through there */
 .heroTitleBottom {
   z-index: 4;
   color: #0f0f0f;
-  -webkit-mask-image:
-    linear-gradient(
-      to right,
-      #000 0 var(--frame-left),
-      transparent var(--frame-left) calc(100% - var(--frame-right)),
-      #000 calc(100% - var(--frame-right))
-    ),
-    linear-gradient(
-      to bottom,
-      #000 0 var(--frame-top),
-      transparent var(--frame-top) calc(100% - var(--frame-bottom)),
-      #000 calc(100% - var(--frame-bottom))
-    );
-  -webkit-mask-composite: source-over;
   mask-image:
     linear-gradient(
       to right,
@@ -168,43 +118,81 @@
       transparent var(--frame-top) calc(100% - var(--frame-bottom)),
       #000 calc(100% - var(--frame-bottom))
     );
-  mask-composite: add;
 }
 
-.scroll {
-  --drop-delay: 0.1s;
-  --drop-duration: 0.5s;
-  --drop-distance: 10px;
-  --curve-duration: 1s;
+/* the shape sits between the black text and the outline text */
+.heroShape {
+  position: absolute;
+  z-index: 5;
+  top: calc(50% - 30px);
+  left: calc(50% - 50px);
+  width: min(58vw, 620px);
+  height: auto;
+  opacity: 0.9;
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(-8deg);
+}
 
+/* front: outline only */
+.heroTitleTop {
+  z-index: 6;
+  color: transparent;
+  -webkit-text-stroke: 2px #f0f0f0;
+}
+
+/* ---------- Scroll arrow ---------- */
+
+.scroll {
   position: absolute;
   z-index: 2;
   bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   opacity: 0.7;
 }
 
 .scrollArrow {
+  display: block;
   width: 60px;
   height: 60px;
+  overflow: visible;
   fill: none;
   stroke: #292929;
-  stroke-width: 1;
+  stroke-width: 2.5;
   stroke-linecap: round;
-  overflow: visible;
+  stroke-linejoin: round;
 }
+
+/* The normal style is the END state. The animations only say
+   where to start from, so no extra reduced-motion fixes are needed. */
+.arrowDrop {
+  transform: translateY(10px);
+  animation: drop 0.5s linear 0.1s backwards;
+}
+
+.arrowCurve {
+  transform-box: view-box;
+  transform-origin: 20px 6px;
+  vector-effect: non-scaling-stroke;
+  animation: curve 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s backwards;
+}
+
+@keyframes drop {
+  from { transform: translateY(0); }
+}
+
+@keyframes curve {
+  from { transform: scaleY(0.001); }
+}
+
+/* ---------- Social icons ---------- */
 
 .heroSocials {
   position: absolute;
   z-index: 2;
-  bottom: 24px;
   right: 24px;
+  bottom: 24px;
   display: flex;
-  align-items: center;
   gap: 20px;
 }
 
@@ -212,55 +200,33 @@
   display: inline-flex;
   color: #292929;
   font-size: 22px;
-  line-height: 1;
-  text-decoration: none;
-  transition: color 180ms ease, transform 180ms ease;
+  transition: color 180ms, transform 180ms;
 }
 
 .heroSocials a:hover,
 .heroSocials a:focus-visible {
-  color: #ffffff;
+  color: #fff;
   transform: translateY(-3px);
 }
 
+/* ---------- Back-to-top button (used by App.jsx) ---------- */
+
 .backToTop {
   position: fixed;
-  right: -76px;
+  right: -76px; /* parked off-screen */
   bottom: 24px;
   z-index: 9;
   display: grid;
+  place-items: center;
   width: 52px;
   height: 52px;
-  place-items: center;
   padding: 0;
   border: 1px solid #292929;
   border-radius: 50%;
   background: #f0f0f0;
   color: #292929;
   cursor: pointer;
-  transition: right 600ms cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 180ms ease, color 180ms ease;
-}
-
-@media (max-width: 700px) {
-  .hero {
-    --frame-left: 40px;
-    --frame-right: 40px;
-    --frame-top: 40px;
-    --frame-bottom: 40px;
-  }
-
-  .heroFrame {
-    inset: var(--frame-top) var(--frame-right) var(--frame-bottom)
-      var(--frame-left);
-  }
-
-  .heroShape {
-    width: min(82vw, 440px);
-    max-width: calc(100% - 40px);
-    max-height: calc(100% - 40px);
-  }
-
+  transition: right 600ms cubic-bezier(0.22, 1, 0.36, 1), background-color 180ms, color 180ms;
 }
 
 .backToTop.visible {
@@ -277,49 +243,32 @@
   height: 22px;
   fill: none;
   stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
   stroke-width: 1.8;
-}
-
-.arrowDrop {
-  animation: arrowDrop var(--drop-duration) linear var(--drop-delay) both;
-}
-
-.arrowCurve {
-  fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-  transform-box: view-box;
-  transform-origin: 20px 6px;
-  vector-effect: non-scaling-stroke;
-  stroke-width: 2.5;
-  animation: arrowCurve var(--curve-duration) cubic-bezier(0.22, 1, 0.36, 1)
-    calc(var(--drop-delay) + var(--drop-duration)) both;
 }
 
-@keyframes arrowDrop {
-  0% {
-    transform: translateY(0);
-    animation-timing-function: cubic-bezier(0.333, 0, 0.667, 0.333);
-  }
-  40% {
-    transform: translateY(calc(var(--drop-distance) * 0.25));
-    animation-timing-function: linear;
-  }
-  100% {
-    transform: translateY(var(--drop-distance));
-  }
-}
+/* ---------- Small screens + reduced motion ---------- */
 
-@keyframes arrowCurve {
-  from { transform: scaleY(0.001); }
-  to   { transform: scaleY(1); }
+@media (max-width: 700px) {
+  .hero {
+    --frame-left: 40px;
+    --frame-right: 40px;
+    --frame-bottom: 40px;
+  }
+
+  .heroShape {
+    width: min(82vw, 440px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .arrowDrop, .arrowCurve { animation: none; }
-  .backToTop { transition: none; }
-  .arrowDrop { transform: translateY(var(--drop-distance)); }
-  .arrowCurve { transform: scaleY(1); }
+  .arrowDrop,
+  .arrowCurve {
+    animation: none;
+  }
+
+  .backToTop {
+    transition: none;
+  }
 }
