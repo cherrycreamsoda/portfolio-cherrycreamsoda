@@ -1,10 +1,22 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { FaBehance, FaGithub, FaLinkedinIn } from 'react-icons/fa'
 import './Hero.css'
 
 function Hero() {
   const titleRef = useRef(null)
   const [titleSize, setTitleSize] = useState(null)
+  const [headerVisible, setHeaderVisible] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHeaderVisible(window.scrollY > 0)
+    }
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useLayoutEffect(() => {
     const title = titleRef.current
@@ -52,13 +64,18 @@ function Hero() {
   return (
     <section className="hero" id="top" data-header-theme="light">
       <div className="heroFrame">
-        <nav className="heroNav" aria-label="Hero navigation">
+        <nav
+          className={`heroNav${headerVisible ? ' is-hidden' : ''}`}
+          aria-label="Hero navigation"
+        >
           <div className="heroNavLinks">
             <a href="#work">Work</a>
             <a href="#about">About</a>
           </div>
           <a href="#contact">Contact</a>
         </nav>
+
+        <p className="heroDescriptor">a Frontend Developer.</p>
       </div>
 
       <h1

@@ -37,6 +37,30 @@
   justify-content: space-between;
   color: #0f0f0f;
   font-size: 18px;
+  opacity: 1;
+  transition: opacity 220ms ease, visibility 0s linear 220ms;
+}
+
+.heroNav.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition-delay: 0s;
+}
+
+.heroNav:not(.is-hidden) {
+  transition-delay: 220ms, 440ms;
+}
+
+.heroDescriptor {
+  position: absolute;
+  bottom: 170px;
+  right: 24px;
+  z-index: 3;
+  color: #444444;
+  font-size: 60px;
+  font-weight: 300;
+  line-height: 1;
 }
 
 .heroNavLinks {
