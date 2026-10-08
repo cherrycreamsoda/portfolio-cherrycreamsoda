@@ -41,7 +41,13 @@ function PageScrollbar() {
     updateMetrics()
     const handleScroll = () => {
       updateMetrics()
-      showScrollbar()
+
+      if (window.scrollY === 0) {
+        window.clearTimeout(hideTimeout.current)
+        setIsVisible(true)
+      } else {
+        showScrollbar()
+      }
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })

@@ -89,83 +89,85 @@ function Contact() {
   }
 
   return (
-    <section className="contact" id="contact" data-header-theme="dark">
-      <div className="contactDetails">
-        <h2>Contact</h2>
-      </div>
-
-      <form className="contactForm" onSubmit={handleSubmit} noValidate>
-        <div className="nameFields">
-          <label>
-            First name
-            <input
-              type="text"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              autoComplete="given-name"
-              aria-invalid={!!errors.firstName}
-            />
-            {errors.firstName && <span className="fieldError">{errors.firstName}</span>}
-          </label>
-          <label>
-            Last name
-            <input
-              type="text"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              autoComplete="family-name"
-            />
-          </label>
+    <div className="contactShell">
+      <section className="contact" id="contact" data-header-theme="dark">
+        <div className="contactDetails">
+          <h2>Contact</h2>
         </div>
 
-        <label>
-          Email address
+        <form className="contactForm" onSubmit={handleSubmit} noValidate>
+          <div className="nameFields">
+            <label>
+              First name
+              <input
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                autoComplete="given-name"
+                aria-invalid={!!errors.firstName}
+              />
+              {errors.firstName && <span className="fieldError">{errors.firstName}</span>}
+            </label>
+            <label>
+              Last name
+              <input
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                autoComplete="family-name"
+              />
+            </label>
+          </div>
+
+          <label>
+            Email address
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              autoComplete="email"
+              aria-invalid={!!errors.email}
+            />
+            {errors.email && <span className="fieldError">{errors.email}</span>}
+          </label>
+
+          <label>
+            Message
+            <textarea
+              name="message"
+              rows="4"
+              value={formData.message}
+              onChange={handleChange}
+              aria-invalid={!!errors.message}
+            />
+            {errors.message && <span className="fieldError">{errors.message}</span>}
+          </label>
+
+          {/* Honeypot: hidden from real users */}
           <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            autoComplete="email"
-            aria-invalid={!!errors.email}
+            type="text"
+            name="_honey"
+            value={honey}
+            onChange={(e) => setHoney(e.target.value)}
+            style={{ display: 'none' }}
+            tabIndex={-1}
+            autoComplete="off"
           />
-          {errors.email && <span className="fieldError">{errors.email}</span>}
-        </label>
 
-        <label>
-          Message
-          <textarea
-            name="message"
-            rows="4"
-            value={formData.message}
-            onChange={handleChange}
-            aria-invalid={!!errors.message}
-          />
-          {errors.message && <span className="fieldError">{errors.message}</span>}
-        </label>
+          <button type="submit" className="submitButton" disabled={status === 'sending'}>
+            {status === 'sending' ? 'Sending...' : 'Send message'}
+          </button>
 
-        {/* Honeypot: hidden from real users */}
-        <input
-          type="text"
-          name="_honey"
-          value={honey}
-          onChange={(e) => setHoney(e.target.value)}
-          style={{ display: 'none' }}
-          tabIndex={-1}
-          autoComplete="off"
-        />
-
-        <button type="submit" className="submitButton" disabled={status === 'sending'}>
-          {status === 'sending' ? 'Sending...' : 'Send message'}
-        </button>
-
-        <p className={`formStatus ${status}`} role="status" aria-live="polite">
-          {status === 'success' && "Thanks! Your message was sent. I'll get back to you soon."}
-          {status === 'error' && 'Something went wrong. Please try again or email me directly.'}
-        </p>
-      </form>
-    </section>
+          <p className={`formStatus ${status}`} role="status" aria-live="polite">
+            {status === 'success' && "Thanks! Your message was sent. I'll get back to you soon."}
+            {status === 'error' && 'Something went wrong. Please try again or email me directly.'}
+          </p>
+        </form>
+      </section>
+    </div>
   )
 }
 
