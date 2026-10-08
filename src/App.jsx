@@ -7,6 +7,7 @@ import About from './sections/About'
 import Contact from './sections/Contact'
 import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
+import PageScrollbar from './components/PageScrollbar'
 
 function App() {
   const [backToTopVisible, setBackToTopVisible] = useState(false)
@@ -32,6 +33,7 @@ function App() {
   return (
     <>
       <CustomCursor />
+      <PageScrollbar />
       <Header />
       <main>
         <Hero />

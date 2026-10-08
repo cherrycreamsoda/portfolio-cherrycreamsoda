@@ -1,0 +1,48 @@
+.pageScrollbar {
+  position: fixed;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  width: 12px;
+  box-sizing: border-box;
+  border: 2px solid #0F0F0F;
+  border-radius: 999px;
+  background: #D6D6D6;
+  z-index: 9998;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateX(calc(100% + 2px));
+  transition: opacity 180ms ease, transform 300ms ease;
+}
+
+.pageScrollbarVisible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.pageScrollbarThumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  border: 3px solid #D6D6D6;
+  border-radius: 999px;
+  box-sizing: border-box;
+  background: #0F0F0F;
+  cursor: grab;
+  touch-action: none;
+}
+
+.pageScrollbarThumb:active {
+  cursor: grabbing;
+}
+
+.pageScrollbarDragging {
+  user-select: none;
+}
+
+@media (max-width: 700px), (pointer: coarse) {
+  .pageScrollbar {
+    display: none;
+  }
+}
