@@ -1,14 +1,14 @@
 /* ---------- Section + the rounded "window" ---------- */
 
 .hero {
-  --frame-left: 80px;
+  --frame-left: 60px;
   --frame-right: 80px;
-  --frame-top: 40px;
-  --frame-bottom: 80px;
+  --frame-top: 20px;
+  --frame-bottom: 60px;
 
   /* Title size = (screen width - 270px) x this number.
-     Depends on your font: see "How to tune" in the notes. */
-  --title-ratio: 0.21;
+     Depends on your font */
+  --title-ratio: 0.215;
 
   position: relative;
   height: 100vh;
@@ -24,7 +24,7 @@
   border: 4px solid #f0f0f0;
   border-radius: 24px;
   background: #f0f0f0;
-  outline: 4px solid #131313;
+  outline: 1px solid #353535;
   box-shadow: 18px 18px 28px 8px rgba(0, 0, 0, 0.43);
 }
 
@@ -32,14 +32,16 @@
 
 .heroNav {
   position: absolute;
-  top: 24px;
-  right: 24px;
-  left: 24px;
+  top: 0px;
+  right: 0px;
+  left: 0px;
   display: flex;
   justify-content: space-between;
   color: #0f0f0f;
   font-size: 18px;
   transition: opacity 220ms, visibility 220ms;
+  padding: 13px 21px 15px 21px;
+  border-bottom: 1px solid #0f0f0f34;
 }
 
 .heroNav.is-hidden {
@@ -52,15 +54,21 @@
   gap: 24px;
 }
 
+
 .heroNav a {
   color: inherit;
   text-decoration: none;
-  transition: opacity 180ms;
 }
 
-.heroNav a:hover,
-.heroNav a:focus-visible {
-  opacity: 0.6;
+a.heroNavBrand {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  color: #a0a0a0;
+  font-family: "Lavishly Yours", cursive;
+  font-size: 30px;
+  line-height: 1;
+  transform: translate(-50%, -50%);
 }
 
 .heroDescriptor {
