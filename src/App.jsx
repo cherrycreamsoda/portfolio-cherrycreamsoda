@@ -6,6 +6,7 @@ import Work from './sections/Work'
 import About from './sections/About'
 import Contact from './sections/Contact'
 import Footer from './components/Footer'
+import CustomCursor from './components/CustomCursor'
 
 function App() {
   const [backToTopVisible, setBackToTopVisible] = useState(false)
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <>
+      <CustomCursor />
       <Header />
       <main>
         <Hero />
