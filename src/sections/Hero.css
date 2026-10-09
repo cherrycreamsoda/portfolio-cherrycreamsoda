@@ -2,13 +2,13 @@
 
 .hero {
   --frame-left: 60px;
-  --frame-right: 80px;
+  --frame-right: 60px;
   --frame-top: 20px;
   --frame-bottom: 60px;
 
-  /* Title size = (screen width - 270px) x this number.
-     Depends on your font */
-  --title-ratio: 0.215;
+  /* Font-specific multiplier for title-size calibration. */
+  --title-ratio: 1.03;
+  --title-optical-offset: -0.03em;
 
   position: relative;
   height: 100vh;
@@ -93,13 +93,19 @@ a.heroNavBrand {
   margin: 0;
   padding-bottom: 280px; /* centers the text 140px above the middle */
   display: flex;
+  justify-content: center;
   align-items: center;
   pointer-events: none;
-  font-size: calc((100vw - 270px) * var(--title-ratio));
+  font-size: calc(17.5vw * var(--title-ratio));
   font-weight: 400;
   line-height: 0.9;
   letter-spacing: -0.06em;
   white-space: nowrap;
+}
+
+.heroTitleText {
+  position: relative;
+  left: var(--title-optical-offset);
 }
 
 /* back: dark grey, shows inside the window */

@@ -39,10 +39,16 @@ function Hero() {
       </div>
 
       {/* Same name, 3 layers. Their z-index (see CSS) controls the stacking. */}
-      <div className="heroTitle heroTitleMiddle" aria-hidden="true">{NAME}</div>
-      <div className="heroTitle heroTitleBottom" aria-hidden="true">{NAME}</div>
+      <div className="heroTitle heroTitleMiddle" aria-hidden="true">
+        <span className="heroTitleText">{NAME}</span>
+      </div>
+      <div className="heroTitle heroTitleBottom" aria-hidden="true">
+        <span className="heroTitleText">{NAME}</span>
+      </div>
       <img className="heroShape" src="/30.png" alt="" />
-      <h1 className="heroTitle heroTitleTop">{NAME}</h1>
+      <h1 className="heroTitle heroTitleTop">
+        <span className="heroTitleText">{NAME}</span>
+      </h1>
 
       <div className="scroll" aria-hidden="true">
         <svg className="scrollArrow" viewBox="0 0 40 40">

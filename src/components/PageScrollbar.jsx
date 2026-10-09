@@ -24,7 +24,7 @@ function getScrollMetrics() {
 function PageScrollbar() {
   const [metrics, setMetrics] = useState(getScrollMetrics)
   const [isDragging, setIsDragging] = useState(false)
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
   const hideTimeout = useRef(null)
 
   const showScrollbar = useCallback(() => {
@@ -44,12 +44,13 @@ function PageScrollbar() {
 
       if (window.scrollY === 0) {
         window.clearTimeout(hideTimeout.current)
-        setIsVisible(true)
+        setIsVisible(false)
       } else {
         showScrollbar()
       }
     }
 
+    handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
     window.addEventListener('resize', updateMetrics)
 
